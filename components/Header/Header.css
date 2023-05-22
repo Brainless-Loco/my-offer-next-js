@@ -1,0 +1,105 @@
+/* Header styles */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+    padding-right: 15px;
+    color: #fff;
+  }
+  
+  .logo {
+    width: 15%;
+  }
+  
+  .logo img {
+    height: 30px;
+    width: auto;
+  }
+  
+  .categories {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .categories select {
+    padding: 5px;
+    border: none;
+    background-color: transparent;
+    color: #111;
+  }
+  
+  .links {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  
+  .profile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+  }
+  
+  .profile img {
+    height: 45px;
+    width: 45px;
+    border-radius: 50%;
+    border: 3px solid white;
+  }
+  
+  .profile .dropdown {
+    position: absolute;
+    top: 90%;
+    right: -15%;
+    background-color: transparent;
+    color: #fff;
+    display: none;
+    border: 1px solid wheat;
+    border-radius: 5px;
+  }
+  
+  .profile:hover .dropdown {
+    margin-top:5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2px;
+    width: auto;
+  }
+  .profileNavLinks{
+    text-align: center;
+    width: 100%;
+    padding-left: 25px;
+    padding-right: 25px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    transition: all 0.4s;
+  }
+  .profileNavLinks:hover{
+    background-color: white;
+    color: black;
+  }
+  
+  /* Responsive styles */
+  @media (max-width: 768px) {
+    .header {
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+  
+    .categories,
+    .links,
+    .profile {
+      margin-top: 10px;
+    }
+  
+    .links {
+      justify-content: center;
+    }
+  }
+  
