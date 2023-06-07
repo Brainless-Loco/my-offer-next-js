@@ -1,3 +1,4 @@
+import HeadTagElements from '@/components/HeadTagElements/HeadTagElements'
 import './globals.css'
 import { Inter } from 'next/font/google'
 
@@ -11,6 +12,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <HeadTagElements title="my Offers" /> 
       <body className={inter.className}>{children}</body>
     </html>
   )
