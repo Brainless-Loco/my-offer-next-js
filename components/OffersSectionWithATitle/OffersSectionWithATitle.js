@@ -2,12 +2,10 @@
 
 import React from 'react';
 import './Main.css';
-import Image from 'next/image';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faThumbsUp,faThumbsDown,faComment } from '@fortawesome/free-regular-svg-icons';
-import Link from 'next/link';
 import { Box } from '@mui/material';
 import { faPaperclip } from '@fortawesome/free-solid-svg-icons';
+import AnOffer from './AnOffer';
 
 
 const OfferSection = () => {
@@ -46,30 +44,7 @@ const title = 'Popular';
       <h2 className='OfferCategoryTitle'><FontAwesomeIcon icon={faPaperclip} />&nbsp;&nbsp;{title}</h2>
       <Box className="offerContainer">
         {offers.map((offer) => (
-          <a href={'/'} key={offer.id} className="offerItem">
-            <Image className='offerCoverImage' width={400} height={300} src="/images/1.jpg" />
-            <Box className="offerDetails">
-              <h2 className='offerTitle'>{offer.title}</h2>
-              <p className='OfferBrandName'> {offer.brand}</p>
-              
-              <Box>
-                <p className='durationDate' style={{textAlign:'left'}}>Start Date: {offer.startDate}</p>
-                <p className='durationDate' style={{textAlign:'right'}}>End Date: {offer.endDate}</p>
-              </Box>
-              
-            </Box>
-            <Box className="offerStats">
-                <Box className='likeDislikeDiv'>
-                  <FontAwesomeIcon icon={faThumbsUp} height={20} />&nbsp;({offer.likes})
-                </Box>
-                <Box className='likeDislikeDiv'>
-                  <FontAwesomeIcon icon={faThumbsDown} height={20} />&nbsp;({offer.dislikes})
-                </Box>
-                <Box className='likeDislikeDiv'>
-                  <FontAwesomeIcon icon={faComment} height={20} />&nbsp;({offer.comments})
-                </Box>
-              </Box>
-          </a>
+          <AnOffer offer= {offer}/>
         ))}
       </Box>
     </Box>
