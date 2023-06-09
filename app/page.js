@@ -1,4 +1,5 @@
 import Header from '@/components/Header/Header'
+import GMap from '@/components/Map/GMap'
 import OfferSection from '@/components/OffersSectionWithATitle/OffersSectionWithATitle'
 
 import Image from 'next/image'
@@ -13,6 +14,7 @@ export default function Home() {
   return (
     <main className="p-0">
       <Header/>
+      <GMap/>
       <OfferSection/>
     </main>
   )
