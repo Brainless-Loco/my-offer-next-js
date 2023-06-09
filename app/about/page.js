@@ -1,19 +1,37 @@
 "use client"
 
-import React, { useState } from 'react'
+import React, { useState,useRef,useEffect } from 'react'
 import { useParams } from 'next/navigation'
 import Header from '@/components/Header/Header'
 import HeadTagElements from '@/components/HeadTagElements/HeadTagElements'
 import { Box } from '@mui/material'
 import './about.css'
 import Logo from '@/components/MenuBar/Logo'
+import { gsap } from 'gsap'
 
 export default function page() {
     const params = useParams()
+    const viewRef = useRef()
 
     const [rating, setRating] = useState(0)
 
-    console.log(rating)
+
+    useEffect(() => {
+        const viewCurr = viewRef.current;
+
+
+        gsap.set(viewCurr, { filter: 'blur(10px)' });
+
+        const timeline = gsap.timeline({ repeat: -1, yoyo: true });
+        timeline.to(viewCurr, {
+            filter: 'blur(0px)',
+            scale: 0.95,
+            duration: 2,
+            ease: 'slow(0.7, 0.7, false)',
+        });
+    }, [])
+    
+
 
     return (
         <html lang="en">
@@ -21,7 +39,7 @@ export default function page() {
             <body>
                 <Header/>
 
-                <Box sx={{width:'85%',backgroundColor:'#232324', display:'flex',justifyContent:'center',margin:'auto',marginTop:"5px",padding:'10px 20px',borderRadius:'12px',flexDirection:'column',marginBottom:'10px'}}>
+                <Box ref={viewRef} sx={{width:'85%',backgroundColor:'#232324', display:'flex',justifyContent:'center',margin:'auto',marginTop:"5px",padding:'10px 20px',borderRadius:'12px',flexDirection:'column',marginBottom:'10px'}}>
                     
                     <Box sx={{width:'50%',margin:'auto'}}>
                         <Logo/>

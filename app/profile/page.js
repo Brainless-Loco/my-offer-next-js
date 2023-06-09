@@ -1,6 +1,6 @@
 "use client"
 
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useParams } from 'next/navigation'
 import HeadTagElements from '@/components/HeadTagElements/HeadTagElements'
 import Header from '@/components/Header/Header'
@@ -22,6 +22,12 @@ export default function page() {
 
   console.log(params.offerid)
 
+  useEffect(() => {
+    
+  
+  }, [])
+  
+
 
   return (
     <html lang="en">
@@ -30,7 +36,7 @@ export default function page() {
           <Header/>
 
           <Box sx={{width:'85%',backgroundColor:'#232324', display:'flex',justifyContent:'center',margin:'auto',marginTop:"5px",padding:'20px',borderRadius:'12px',flexDirection:'column',marginBottom:'20px'}}>
-            
+
           </Box>
 
       </body>
