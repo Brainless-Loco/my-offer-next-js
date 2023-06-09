@@ -1,17 +1,38 @@
-import React from 'react'
+"use client"
 
-export default function page() {
+import React from 'react'
+import { useParams } from 'next/navigation'
+import HeadTagElements from '@/components/HeadTagElements/HeadTagElements'
+import Header from '@/components/Header/Header'
+import { Box, Button, TextField } from '@mui/material'
+import Image from 'next/image'
+import './profile.css'
+import Link from 'next/link'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPaperPlane, faThumbsDown, faThumbsUp } from '@fortawesome/free-solid-svg-icons'
+import { faComment } from '@fortawesome/free-regular-svg-icons'
+import AComment from '@/components/OffersSectionWithATitle/AComment'
+import { useState } from 'react'
+
+
+export default function page() {  
+  const params = useParams()
+
+  const [commentText, setcommentText] = useState('')
+
+  console.log(params.offerid)
+
+
   return (
     <html lang="en">
-      <head>
-        <title>Profile</title>
-      </head>
+      <HeadTagElements title="An Offer" />
       <body>
-       <div
-        >From layout</div>
-        <div>
-                Profile
-        </div>
+          <Header/>
+
+          <Box sx={{width:'85%',backgroundColor:'#232324', display:'flex',justifyContent:'center',margin:'auto',marginTop:"5px",padding:'20px',borderRadius:'12px',flexDirection:'column',marginBottom:'20px'}}>
+            
+          </Box>
+
       </body>
     </html>
   )
