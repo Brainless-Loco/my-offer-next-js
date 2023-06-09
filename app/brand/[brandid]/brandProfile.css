@@ -1,0 +1,13 @@
+.brandTitle{
+    font-size: 25px;
+    color: #FF5722;
+    font-weight: 700;
+    border-right: 2px solid white;
+    margin-right: 12px;
+}
+
+.brandAboutText{
+    font-size: 15px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
