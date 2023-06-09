@@ -1,0 +1,21 @@
+.offerTitle{
+    font-size: 25px;
+    color: rgba(255, 255, 0, 0.966);
+    text-align: center;
+    font-weight: 500;
+    padding-top: 10px;
+}
+.offerCampaignDate{
+    font-size: 15px;
+    color: rgb(250, 103, 5);
+    text-align: center;
+    font-weight: 500;
+    padding-bottom: 10px;
+}
+.offerDescription{
+    margin-top: 10px;
+    font-size: 14px;
+}
+.commentText{
+    font-size: 13px;
+}

@@ -1,7 +1,7 @@
 import React from 'react';
 import './Header.css';
 import Logo from '../MenuBar/Logo';
-import Dropdown from '../MenuBar/DropDown';
+import Link from 'next/link';
 
 const Header = () => {
 
@@ -9,9 +9,9 @@ const Header = () => {
 
   return (
     <header className="header">
-      <div className="logo">
+      <Link href={"/"} className="logo">
         <Logo/>
-      </div>
+      </Link>
       <div className="categories">
         {/* <select>
           <option value="category1">Category 1</option>

@@ -10,7 +10,6 @@ export default function Home() {
   // const dispatch = 
   
 
-
   return (
     <main className="p-0">
       <Header/>
