@@ -13,7 +13,7 @@ export default function Home() {
   return (
     <main className="p-0">
       <Header/>
-      <GMap/>
+      {/* <GMap/> */}
       <OfferSection/>
     </main>
   )

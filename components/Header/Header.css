@@ -6,6 +6,7 @@
     padding: 5px;
     padding-right: 15px;
     color: #fff;
+    z-index: 50000;
   }
   
   .logo {
@@ -21,6 +22,7 @@
     display: flex;
     align-items: center;
     gap: 10px;
+    z-index: 15;
   }
   
   .categories select {
@@ -70,6 +72,7 @@
     align-items: center;
     gap: 2px;
     width: auto;
+    background-color: #222020;
   }
   .profileNavLinks{
     text-align: center;
