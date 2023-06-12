@@ -6,8 +6,11 @@ import { auth, db } from '@/firebase/firebaseConfig';
 import { addDoc, collection, doc, getDocs, query, setDoc, updateDoc, where } from "firebase/firestore/lite";
 import { CircularProgress } from '@mui/material';
 import { createUserWithEmailAndPassword, sendEmailVerification, signInWithEmailAndPassword } from 'firebase/auth';
+import { useRouter } from 'next/navigation';
 
 const LoginSignupComponent = () => {
+
+    const router = useRouter()
 
     const accountsCollection = collection(db, "accounts");
 
@@ -101,6 +104,22 @@ const LoginSignupComponent = () => {
         
     }
 
+    const navigationWorks = async ()=>{
+        const q = query(accountsCollection, where("email", "==", logInemail));
+        const querySnapshot = await getDocs(q);
+        querySnapshot.forEach((doc) => {
+            const userData = doc.data();
+                
+            const jsonData = JSON.stringify(userData);
+            
+            localStorage.setItem("userData", jsonData);
+
+            const rememberMeValue = logInrememberMe==true ? "yes" : "no";
+            localStorage.setItem("rememberMe", rememberMeValue);
+        });
+        // router.replace('/')
+    }
+
 
     const loginUser = async () => {
         setlogInLoading(true)
@@ -108,19 +127,7 @@ const LoginSignupComponent = () => {
             setLogInEmail(logInemail.trim())
             const { user } =await signInWithEmailAndPassword(auth, logInemail, logInpassword);
             if(user.emailVerified){
-                // const usersRef = collection(db, "users");
-                // const q = query(usersRef, where("email", "==", logInemail));
-                // const querySnapshot = await getDocs(q);
-                // querySnapshot.forEach((doc) => {
-                //     const userData = doc.data();
-                //     const {userName,user_id,email,dp_url}=userData
-                //     const loggedUserInfo = {
-                //         userRef:user_id,
-                //         userEmail:email,
-                //         userName:userName,
-                //         userProfilePic:dp_url
-                //     }
-                // });
+                navigationWorks()
             }
             else{
                 alert("Please verify your email first.")
@@ -134,7 +141,6 @@ const LoginSignupComponent = () => {
 
             console.log(e)
         }
-        
         setlogInLoading(false)
       };
 
@@ -155,7 +161,7 @@ const LoginSignupComponent = () => {
             }
             catch(e){
                 alert("Something went wrong")
-                console.log(e)
+                // console.log(e)
             }
           } 
           catch (e) {
@@ -189,7 +195,21 @@ const LoginSignupComponent = () => {
     
 
     useEffect(() => {
-        
+        const checkIfRememberMeWasClicked = ()=>{
+            const rememberMeValue = localStorage.getItem("rememberMe");
+            if(rememberMeValue=='yes'){
+                const userData = JSON.parse(localStorage.getItem('userData'));
+                if (userData) {
+                    const accountType = userData.accountType;
+                    if (accountType === 'brand') {
+                      router.replace('/createOffers');
+                    } else {
+                      router.replace('/');
+                    }
+                }
+            }
+        }
+        checkIfRememberMeWasClicked()
     }, [])
 
 
@@ -204,7 +224,7 @@ const LoginSignupComponent = () => {
                     </Typography>
                     <TextField id="email" label="Email" type="email" fullWidth variant="outlined" margin="normal" 
                     value={logInemail} onChange={(e)=>setLogInEmail(e.target.value)} />
-                    <TextField id="email" label="Email" type="email" fullWidth variant="outlined" margin="normal" 
+                    <TextField id="email" label="Email" type="password" fullWidth variant="outlined" margin="normal" 
                     value={logInpassword} onChange={(e)=>setLogInPassword(e.target.value)} />
                     <FormControlLabel
                         control={<Checkbox />}
@@ -271,7 +291,7 @@ const LoginSignupComponent = () => {
                     {
                         userType !== 'brand' && userNameErrorMessage[1].length>0 && <span style={{color:userNameErrorMessage[0]}}>{userNameErrorMessage[1]}</span>
                     }
-                    {userType === 'brand' && (
+                    {userType === 'brands' && (
                         <>
                             <input
                                 accept="image/*"
