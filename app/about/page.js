@@ -8,6 +8,8 @@ import { Box } from '@mui/material'
 import './about.css'
 import Logo from '@/components/MenuBar/Logo'
 import { gsap } from 'gsap'
+import styles from '../../styles/_footer.module.scss';
+
 
 export default function page() {
     const params = useParams()
@@ -30,6 +32,8 @@ export default function page() {
             ease: 'slow(0.7, 0.7, false)',
         });
     }, [])
+
+    
     
 
 
@@ -75,6 +79,19 @@ export default function page() {
                     Start your journey with us today and unlock a world of unbeatable offers, discover exciting brands, and experience shopping like never before. Join our community of savvy shoppers and let us help you save money while enjoying the best products and services around the world.<br/><br/>
 
                 </Box>
+
+                <footer className={styles.footerModule}>
+                    <div className={styles.logoModule}>
+                        <img src="logo.png" alt="Logo" />
+                        My Website
+                    </div>
+
+                    <div className={styles['social-linksModule']}>
+                        <a href="#"><img src="facebook.png" alt="Facebook" /></a>
+                        <a href="#"><img src="twitter.png" alt="Twitter" /></a>
+                        <a href="#"><img src="instagram.png" alt="Instagram" /></a>
+                    </div>
+                </footer>
 
             </body>
         </html>

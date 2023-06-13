@@ -165,9 +165,6 @@ export default function page() {
     }
   }
 
-  console.log(likes)
-
-
   useEffect(() => {
     preFetchOfferData()
     preFetchUserInfo()
@@ -180,7 +177,7 @@ export default function page() {
 
   return (
     <html lang="en">
-      <HeadTagElements title="An Offer" />
+      <HeadTagElements title={"An Offer"} />
       <body>
           <Header/>
 

@@ -48,10 +48,10 @@ const Header = () => {
         </div>
       </div>
       <div className="links">
-        <a href="/about">About Us</a>
-        <a style={{color:'red'}} href="/deals">Hot Deals!</a>
-        <a href="/brands">Brands</a>
-        <a href="/all">Global</a>
+        <Link href="/about">About Us</Link>
+        <Link style={{color:'red'}} href="/deals">Hot Deals!</Link>
+        <Link href="/brands">Brands</Link>
+        <Link href="/all">Global</Link>
       </div>
       {
         userData!=null && 
