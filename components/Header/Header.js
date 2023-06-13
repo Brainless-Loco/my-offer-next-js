@@ -1,10 +1,30 @@
-import React from 'react';
+"use client"
+
+import React, { useEffect, useState } from 'react';
 import './Header.css';
 import Logo from '../MenuBar/Logo';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 const Header = () => {
 
+  const router = useRouter();
+
+  const [userData, setuserData] = useState(null)
+
+
+  useEffect(() => {
+    const checkIfRememberMeWasClicked = ()=>{
+        const rememberMeValue = localStorage.getItem("rememberMe");
+        if(rememberMeValue=='yes'){
+            const userDataFromLocalStorage = JSON.parse(localStorage.getItem('userData'));
+            if (userDataFromLocalStorage) {
+              setuserData(userDataFromLocalStorage)
+            }
+        }
+    }
+    checkIfRememberMeWasClicked()
+}, [])
 
 
   return (
@@ -33,14 +53,18 @@ const Header = () => {
         <a href="/brands">Brands</a>
         <a href="/all">Global</a>
       </div>
-      <div className="profile">
-        <img src="https://e7.pngegg.com/pngimages/799/987/png-clipart-computer-icons-avatar-icon-design-avatar-heroes-computer-wallpaper-thumbnail.png" alt="Profile" />
-        <div className="dropdown">
-          <a className='profileNavLinks' href="/profile">Profile</a>
-          <a className='profileNavLinks' href="/settings">Settings</a>
-          <a className='profileNavLinks' href="/logout">Logout</a>
-        </div>
+      {
+        userData!=null && 
+        <div className="profile">
+          <img src="https://e7.pngegg.com/pngimages/799/987/png-clipart-computer-icons-avatar-icon-design-avatar-heroes-computer-wallpaper-thumbnail.png" alt="Profile" />
+          <div className="dropdown">
+              <a className='profileNavLinks' href="/profile">Profile</a>
+              <a className='profileNavLinks' href="/settings">Settings</a>
+              <a className='profileNavLinks' href="/logout">Logout</a>
+          </div>
       </div>
+      }
+     
     </header>
   );
 };

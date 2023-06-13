@@ -36,6 +36,7 @@
 
 .offerCoverImage{
   border-radius: 8px;
+  max-height: 400px;
 }
 
 .offerTitle{

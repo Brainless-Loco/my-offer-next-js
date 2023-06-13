@@ -105,7 +105,7 @@ export default function page() {
         setloading(true)
         try {
             const {accountRef} = brandData
-            const {brandTitle,brandCover} = brandData.brandInfo
+            const {brandTitle,brandCover,geoLocation} = brandData.brandInfo
             const fileName = `brandOfferImages/${accountRef}_${Date.now()}`;
             uploadTheOfferCover(fileName)
             const offerData = {
@@ -117,6 +117,7 @@ export default function page() {
                 offerCover: fileName,
                 offerDescription: handleGetHtmlCode(),
                 offerTitle: title,
+                offerLocation:geoLocation,
                 postDate: new Date().toISOString(),
                 startDate: startDate,
                 likes:[],
