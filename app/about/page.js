@@ -1,11 +1,10 @@
 "use client"
 
-import React, { useState,useRef,useEffect } from 'react'
-import { useParams } from 'next/navigation'
+import React, { useRef,useEffect } from 'react'
 import Header from '@/components/Header/Header'
 import HeadTagElements from '@/components/HeadTagElements/HeadTagElements'
 import { Box } from '@mui/material'
-// import './about.css'
+import './about.css'
 import Logo from '@/components/MenuBar/Logo'
 import { gsap } from 'gsap'
 import styles from './Footer.module.scss';
