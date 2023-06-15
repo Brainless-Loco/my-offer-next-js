@@ -1,0 +1,58 @@
+$primaryColor: #337ab7; ///variables
+$secondaryColor: #3b3737;
+
+@mixin flexCenter { ///mixins
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer {
+  background-color: $secondaryColor;
+  padding: 20px 0;
+  text-align: center;
+}
+
+.container {
+  max-width: 100%;
+  margin: 0 auto;
+  svg {
+    height: 200px;
+    margin: auto
+  }
+}
+
+.socialLinks {
+  @include flexCenter;
+
+  .socialLink {
+    font-size: 10px+5px; //operators
+    color: $primaryColor;
+    margin-left: 5px;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: darken($primaryColor, 20%);
+    }
+  }
+}
+
+.footerContent {
+  @include flexCenter;
+  flex-direction: column;
+
+  .tagline {
+    font-size: 16px;
+    color: #ffffff;
+    margin: 0;
+  }
+}
+
+.contact {
+  color: #ffffff;
+
+  a {
+    color: $primaryColor;
+    text-decoration: none;
+  }
+}

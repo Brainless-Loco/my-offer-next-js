@@ -5,17 +5,14 @@ import { useParams } from 'next/navigation'
 import Header from '@/components/Header/Header'
 import HeadTagElements from '@/components/HeadTagElements/HeadTagElements'
 import { Box } from '@mui/material'
-import './about.css'
+// import './about.css'
 import Logo from '@/components/MenuBar/Logo'
 import { gsap } from 'gsap'
-import styles from '../../styles/_footer.module.scss';
+import styles from './Footer.module.scss';
 
 
 export default function page() {
-    const params = useParams()
     const viewRef = useRef()
-
-    const [rating, setRating] = useState(0)
 
 
     useEffect(() => {
@@ -33,9 +30,23 @@ export default function page() {
         });
     }, [])
 
-    
-    
+    // const sass = require('sass');
 
+    // console.log(sass.compile("./footer.scss"))
+
+    // const result = sass.compile("./footer.scss");
+    // console.log(result.css);
+
+    // const compressed = sass.compile("../../styles/_footer.module.scss", {style: "compressed"});
+    // console.log(compressed.css);
+
+
+    // const result = sass.renderSync({file: "./footer.scss"});
+    // console.log(result.css.toString());
+
+
+    
+    console.log(styles)
 
     return (
         <html lang="en">
@@ -80,17 +91,27 @@ export default function page() {
 
                 </Box>
 
-                <footer className={styles.footerModule}>
-                    <div className={styles.logoModule}>
-                        <img src="logo.png" alt="Logo" />
-                        My Website
-                    </div>
-
-                    <div className={styles['social-linksModule']}>
-                        <a href="#"><img src="facebook.png" alt="Facebook" /></a>
-                        <a href="#"><img src="twitter.png" alt="Twitter" /></a>
-                        <a href="#"><img src="instagram.png" alt="Instagram" /></a>
-                    </div>
+                <footer className={styles.footer}>
+                    <div className={styles.container}>
+                        <Logo/>
+                        <div className={styles.socialLinks}>
+                            <a href="#" className={styles.socialLink}>
+                                Facebook
+                            </a>
+                            <a href="#" className={styles.socialLink}>
+                                Twitter
+                            </a>
+                            <a href="#" className={styles.socialLink}>
+                                Instagram
+                            </a>
+                        </div>
+                        <div className={styles.footerContent}>
+                            <p className={styles.tagline}>Discover the best offers at your fingertips!</p>
+                            </div>
+                            <p className={styles.contact}>
+                            For inquiries, contact us at <a href="mailto:info@myoffer.com">info@myoffer.com</a>
+                            </p>
+                        </div>
                 </footer>
 
             </body>
