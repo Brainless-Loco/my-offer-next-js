@@ -62,17 +62,16 @@ export default function GMap() {
                     <LoadScript googleMapsApiKey="AIzaSyDYUDVcyIfjP-xMid-UAfMcwlqOBeii__I">
                         <GoogleMap mapContainerStyle={containerStyle} center={center} zoom={10}>
                             {
-                                offers.length>0 && offers.map((offer)=>
+                                offers.map((offer)=>
                                     <Marker position={{lat:offer.offerLocation.latitude,lng: offer.offerLocation.longitude}} onClick={() => handleMarkerClick(offer)} />)
                             }
                             {selectedMarker && (
                                     <InfoWindow
-                                        position={{lat:selectedMarker.offerLocation.latitude,lng: selectedMarker.offerLocation.longitude}}
-                                        onCloseClick={handleInfoWindowClose}
-                                    >
+                                        position={{lat:selectedMarker.offerLocation.latitude,lng: selectedMarker.offerLocation.longitude}} onCloseClick={handleInfoWindowClose} >
                                         <div style={{textAlign:'center',color:'black',}}>
                                             <h3 style={{color:'#FF5722',fontWeight:'bold',fontSize:'18px'}}>{selectedMarker.offerTitle}</h3>
-                                            <p style={{fontWeight:'600',color:'#081533',fontSize:'13.5px'}}>{selectedMarker.brandTitle}</p>
+                                            <Link href={'brand/'+selectedMarker.accountRef} style={{fontWeight:'600',color:'#081533',fontSize:'13.5px'}}>{selectedMarker.brandTitle}</Link> 
+                                            <br/>
                                             <Link style={{color:'blue',fontWeight:'400'}} href={'/offer/'+selectedMarker.offerRef}>Read More</Link>
                                         </div>
                                     </InfoWindow>
