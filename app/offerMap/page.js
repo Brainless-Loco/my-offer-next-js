@@ -60,16 +60,10 @@ export default function GMap() {
                     </Box> :
 
                     <LoadScript googleMapsApiKey="AIzaSyDYUDVcyIfjP-xMid-UAfMcwlqOBeii__I">
-                        <GoogleMap
-                            mapContainerStyle={containerStyle}
-                            center={center}
-                            zoom={10}
-                        >
-
+                        <GoogleMap mapContainerStyle={containerStyle} center={center} zoom={10}>
                             {
-                            offers.length>0 && offers.map((offer)=>
-                                <Marker position={{lat:offer.offerLocation.latitude,lng: offer.offerLocation.longitude}} onClick={() => handleMarkerClick(offer)} />
-                            )
+                                offers.length>0 && offers.map((offer)=>
+                                    <Marker position={{lat:offer.offerLocation.latitude,lng: offer.offerLocation.longitude}} onClick={() => handleMarkerClick(offer)} />)
                             }
                             {selectedMarker && (
                                     <InfoWindow
