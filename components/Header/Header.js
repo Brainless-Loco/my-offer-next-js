@@ -51,7 +51,7 @@ const Header = () => {
         <Link href="/about">About Us</Link>
         <Link style={{color:'red'}} href="/deals">Hot Deals!</Link>
         <Link href="/brands">Brands</Link>
-        <Link href="/all">Global</Link>
+        <Link href="/offerMap">Global</Link>
       </div>
       {
         userData!=null && 

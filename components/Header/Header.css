@@ -73,6 +73,7 @@
     gap: 2px;
     width: auto;
     background-color: #222020;
+    z-index: 400;
   }
   .profileNavLinks{
     text-align: center;
