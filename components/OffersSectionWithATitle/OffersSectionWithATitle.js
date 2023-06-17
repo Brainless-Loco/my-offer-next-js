@@ -10,35 +10,12 @@ import { collection, getDocs } from 'firebase/firestore/lite';
 import { db } from '@/firebase/firebaseConfig';
 
 
-const OfferSection = () => {
-
-const title = 'Popular';
-  // const offers = [
-  //   {
-  //     id: 1,
-  //     coverPhoto: 'https://example.com/offer1.jpg',
-  //     title: '50% Off Summer Sale',
-  //     brand: 'ABC Company',
-  //     startDate: '2023-06-01',
-  //     endDate: '2023-06-15',
-  //     likes: 100,
-  //     dislikes: 10,
-  //     comments: 20,
-  //   },
-  //   {
-  //     id: 2,
-  //     coverPhoto: 'https://example.com/offer2.jpg',
-  //     title: 'Limited Time Flash Sale',
-  //     brand: 'XYZ Brand',
-  //     startDate: '2023-06-10',
-  //     endDate: '2023-06-12',
-  //     likes: 80,
-  //     dislikes: 5,
-  //     comments: 15,
-  //   },
-  // ];
+const OfferSection = (props) => {
+  
 
   const [offers, setoffers] = useState([])
+  const [title, setTitle] = useState('Popular')
+  
   
 
   useEffect(() => {
@@ -53,10 +30,7 @@ const title = 'Popular';
       }
     }
 
-
     fetchOffers()
-
-
   }, [])
   
 

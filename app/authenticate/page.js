@@ -42,6 +42,8 @@ const LoginSignupComponent = () => {
     const [brandName, setbrandName] = useState('');
     const [userNameErrorMessage, setuserNameErrorMessage] = useState(['',''])
     const [errorMessage, seterrorMessage] = useState('')
+    const [latitude, setlatitude] = useState(0)
+    const [longitude, setlongitude] = useState(0)
 
     
 
@@ -90,6 +92,10 @@ const LoginSignupComponent = () => {
                   brandTitle: brandName,
                   ratings: []
                 } : {},
+                geoLocation:{
+                    latitude:latitude,
+                    longitude:longitude
+                },
                 email: email,
                 profilePic: userType !== "brand" ? "avatar.png" : "",
                 username: userType !== "brand" ? username: ""
@@ -117,7 +123,7 @@ const LoginSignupComponent = () => {
             const rememberMeValue = logInrememberMe==true ? "yes" : "no";
             localStorage.setItem("rememberMe", rememberMeValue);
         });
-        // router.replace('/')
+        router.replace('/')
     }
 
 
@@ -311,9 +317,19 @@ const LoginSignupComponent = () => {
                         </>
                     )}
                     
-                    <TextField id="aboutBrand" label="About Brand" type="text" fullWidth variant="outlined"
+                    <TextField id="aboutBrand" label="About Brand" type="number" fullWidth variant="outlined"
                         margin="normal"  value={aboutBrand} multiline={true}
                         onChange={(e)=>setAboutBrand(e.target.value)}
+                        style={{ display: userType === 'customer' ? 'none' : 'block' }}
+                    />
+                    <TextField id="latitude" label="Latitude" type="number" fullWidth variant="outlined"
+                        margin="normal"  value={latitude}
+                        onChange={(e)=>setlatitude(e.target.value)}
+                        style={{ display: userType === 'customer' ? 'none' : 'block' }}
+                    />
+                    <TextField id="longitude" label="Longitude" type='number' fullWidth variant="outlined"
+                        margin="normal"  value={longitude}
+                        onChange={(e)=> setlongitude(e.target.value)}
                         style={{ display: userType === 'customer' ? 'none' : 'block' }}
                     />
                     

@@ -4,6 +4,7 @@ import React from 'react'
 export default function AComment(props) {
 
   const {userRef,username,userProfilePic,comment,commentTime} = props.commentInfo
+  // console.log(commentTime)
 
   const getImageUrlToShow = (image)=>{
     const storageBucket= "myoffer-de0b5.appspot.com"

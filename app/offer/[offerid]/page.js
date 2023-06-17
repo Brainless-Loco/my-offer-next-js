@@ -29,7 +29,7 @@ export default function page() {
 
   const [commentText, setcommentText] = useState('')
   const [offer,setOffer] = useState({})
-  const [userData, setUserData] = useState({})
+  const [userData, setUserData] = useState(null)
   const [likes, setlikes] = useState([])
   const [dislikes, setdislikes] = useState([])
   const [comments, setComments] = useState([])
@@ -115,7 +115,7 @@ export default function page() {
         username:userData.username,
         userProfilePic:userData.userProfilePic,
         comment:commentText.trim(),
-        commentTime:new Date()
+        commentTime:new Date().toISOString()
       }
       setComments([...comments,tempCommentInfo])
       await updateDoc(offerRef, { comments: [...comments,tempCommentInfo] });
@@ -197,13 +197,13 @@ export default function page() {
               </Box>
               <Box style={{width:'100%',borderRadius:'5px',border:'1px solid #fff',height:"auto",marginTop:'15px',display:'flex',justifyContent:'space-around',alignItems:'center',padding:'10px'}}>
 
-                <Button onClick={()=>{doLikeOrDisLikeOrUndo('like');}} style={{width:'30%',height:'50px',borderRadius:'5px',fontSize:'20px',color:'white'}}>
-                  <FontAwesomeIcon icon={faThumbsUp} style={{fontSize:'30px',color: likes.includes(userData.userRef)? 'blue':'white'}}/>&nbsp;({likes.length})
+                <Button onClick={()=>{doLikeOrDisLikeOrUndo('like');}} disabled={userData ==null} style={{width:'30%',height:'50px',borderRadius:'5px',fontSize:'20px',color:'white'}}>
+                  <FontAwesomeIcon icon={faThumbsUp} style={{fontSize:'30px',color: userData && likes.includes(userData.userRef)? 'blue':'white'}}/>&nbsp;({likes.length})
                 </Button>
 
-                <Button onClick={()=>{doLikeOrDisLikeOrUndo('dislike'); }} style={{width:'30%',height:'50px',borderRadius:'5px',fontSize:'20px',color:'white'}}>
+                <Button onClick={()=>{doLikeOrDisLikeOrUndo('dislike'); }} disabled={userData ==null} style={{width:'30%',height:'50px',borderRadius:'5px',fontSize:'20px',color:'white'}}>
                   {/* <FontAwesomeIcon icon={faThumbsDown} style={{fontSize:'30px'}}/> */}
-                  <FontAwesomeIcon icon={faThumbsDown} style={{fontSize:'30px',color:dislikes.includes(userData.userRef)? 'red':'white'}}/>&nbsp;({dislikes.length})
+                  <FontAwesomeIcon icon={faThumbsDown} style={{fontSize:'30px',color: userData && dislikes.includes(userData.userRef)? 'red':'white'}}/>&nbsp;({dislikes.length})
                 </Button>
 
                 <Button disabled style={{width:'30%',height:'50px',borderRadius:'5px',fontSize:'20px',color:'white'}}>
@@ -219,7 +219,7 @@ export default function page() {
 
                 {/* <AComment commentInfo={}/> */}
 
-                <Box sx={{textAlign:'center',marginTop:'10px',position:'relative'}}>
+                <Box sx={{textAlign:'center',marginTop:'10px',position:'relative',display:userData==null && 'none'}}>
 
                   <TextField sx={{color:'white',border:'1px solid white',borderRadius:'8px',width:'99%',margin:'auto',}} placeholder='Write a Comment' value={commentText} 
                     onChange={(e)=> setcommentText(e.target.value)}

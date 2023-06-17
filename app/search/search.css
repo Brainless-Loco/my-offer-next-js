@@ -1,0 +1,83 @@
+.offerSection {
+    color: white;
+    padding: 15px;
+  }
+  
+  .OfferCategoryTitle{
+    color: #FF5722;
+    font-size: 22px;
+    font-weight: bold;
+    border-bottom: 1px solid #dfd8d8;
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+  }
+  
+  .offerContainer {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 6px;
+    padding-left: 5px;
+  }
+  
+  .offerItem {
+    width: 300px;
+    padding: 10px;
+    margin: 10px;
+    background-color: #222020;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all .5s;
+  }
+  
+  .offerItem:hover {
+    background-color: #444040;
+    transform: scale(1.05);
+  }
+  
+  .offerCoverImage{
+    border-radius: 8px;
+    max-height: 400px;
+  }
+  
+  .offerTitle{
+    font-size: 18px;
+    font-weight: bold;
+    color: rgb(240, 236, 6);
+  }
+  
+  .OfferBrandName{
+    font-size: 12px;
+    font-weight: bolder;
+    color: rgb(11, 236, 225);
+  }
+  
+  .offerDetails {
+    margin-top: 10px;
+  }
+  .durationDate{
+    font-size: 12px;
+    width: 45%;
+    display: inline-block;
+  }
+  
+  .offerStats {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap:2px;
+    overflow: hidden;
+    margin-top: 10px;
+  }
+  .likeDislikeDiv{
+    background-color: rgb(240, 232, 232);
+    border-radius: 5px;
+    color:black;
+    padding:5px;
+    font-size: 15px;
+    width: 30%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
