@@ -189,7 +189,7 @@ export default function page() {
               <Box style={{width:'100%'}}>  
                 <h2 className='offerTitle'>{offer.offerTitle}</h2>
                 <h2 className='offerCampaignDate'>[ {offer.startDate} ~ {offer.endDate} ]</h2>
-                <Link style={{color:'cyan',fontSize:'20px',fontWeight:'600'}} href={"brand/"+offer.accountRef}>{offer.brandTitle}</Link>
+                <a style={{color:'cyan',fontSize:'20px',fontWeight:'600'}} href={"brand/"+offer.accountRef}>{offer.brandTitle}</a>
                 <span style={{fontSize:'small',textAlign:'center'}}> &nbsp;&nbsp; - &nbsp; {formatDate(offer.postDate)}</span>
                 <Box className='offerDescription' dangerouslySetInnerHTML={{__html:offer.offerDescription}}>
                   {/* {offer.offerDescription} */}

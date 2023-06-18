@@ -64,7 +64,7 @@ export default function page() {
   
   return (
     <html lang="en">
-      <HeadTagElements title={"An Offer"} />
+      <HeadTagElements title="Search offers" />
       <body>
           <Header/>
 

@@ -29,7 +29,6 @@ const Header = () => {
     checkIfRememberMeWasClicked()
 }, [])
 
-
   return (
     <header className="header">
       <Link href={"/"} className="logo">
@@ -64,6 +63,9 @@ const Header = () => {
           <div className="dropdown">
               <a className='profileNavLinks' href="/profile">Profile</a>
               <a className='profileNavLinks' href="/settings">Settings</a>
+              {userData.accountType == 'brand' && <Button onClick={()=>{
+                router.push('/createOffers')
+              }} sx={{color:'white',fontWeight:'bold',textDecoration:'none'}} className='profileNavLinks' >Create Offers</Button>}
               <Button onClick={()=>{
                 localStorage.removeItem('rememberMe')
                 localStorage.removeItem('userData')

@@ -49,7 +49,7 @@ export default function page() {
 
     return (
         <html lang="en">
-            <HeadTagElements title="A Brand" />
+            <HeadTagElements title="About us" />
             <body>
                 <Header/>
 

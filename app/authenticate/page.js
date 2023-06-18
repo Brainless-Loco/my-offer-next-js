@@ -80,6 +80,8 @@ const LoginSignupComponent = () => {
           }
     }
 
+    console.log(longitude)
+
 
     const firebaseUpdateForSignUp = async ()=>{
         try{
@@ -93,8 +95,8 @@ const LoginSignupComponent = () => {
                   ratings: []
                 } : {},
                 geoLocation:{
-                    latitude:latitude,
-                    longitude:longitude
+                    latitude:Number(latitude),
+                    longitude:Number(longitude)
                 },
                 email: email,
                 profilePic: userType !== "brand" ? "avatar.png" : "",
@@ -163,6 +165,9 @@ const LoginSignupComponent = () => {
                 setConfirmPassword('')
                 setusername('')
                 setbrandName('')
+                setAboutBrand('')
+                setlatitude(0)
+                setlongitude(0)
                 alert('Email verification link sent successfully');
             }
             catch(e){
@@ -178,9 +183,9 @@ const LoginSignupComponent = () => {
           }
     }
 
-    const onSingUpPress = async ()=>{
+    const onSingUpPress = ()=>{
         setsignUpLoading(true)
-        if(email.length==0 || password.length == 0){
+        if(email.length==0 || password.length == 0 || aboutBrand.length==0){
             seterrorMessage("Please provide all the necessarry informations")
             alert(errorMessage)
         }
@@ -229,9 +234,9 @@ const LoginSignupComponent = () => {
                         Log In
                     </Typography>
                     <TextField id="email" label="Email" type="email" fullWidth variant="outlined" margin="normal" 
-                    value={logInemail} onChange={(e)=>setLogInEmail(e.target.value)} />
-                    <TextField id="email" label="Email" type="password" fullWidth variant="outlined" margin="normal" 
-                    value={logInpassword} onChange={(e)=>setLogInPassword(e.target.value)} />
+                    value={logInemail} onChange={(e)=>{setLogInEmail(e.target.value); setlogInErroMessage('')}} />
+                    <TextField id="email" label="Password" type="password" fullWidth variant="outlined" margin="normal" 
+                    value={logInpassword} onChange={(e)=>{setLogInPassword(e.target.value); setlogInErroMessage('')}} />
                     <FormControlLabel
                         control={<Checkbox />}
                         label="Remember me"

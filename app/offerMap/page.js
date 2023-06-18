@@ -35,8 +35,8 @@ export default function GMap() {
         const fetchOffers = async ()=>{
             setLoading(true)
             try {
-              const querySnapshot = await getDocs(collection(db, 'offers')); // Fetch all documents from the "offers" collection
-              const offersFromFirebase = querySnapshot.docs.map((doc) => doc.data()); // Map the document data to an array
+              const querySnapshot = await getDocs(collection(db, 'offers'));
+              const offersFromFirebase = querySnapshot.docs.map((doc) => doc.data());
               setoffers(offersFromFirebase)
             } 
             catch (error) {
@@ -63,8 +63,7 @@ export default function GMap() {
                         <GoogleMap mapContainerStyle={containerStyle} center={center} zoom={10}>
                             {
                                 offers.map((offer)=>{
-                                    // console.log(offer)
-                                    return <Marker position={{lat:offer.offerLocation.latitude,lng: offer.offerLocation.longitude}} onClick={() => handleMarkerClick(offer)} />})
+                                    return <Marker position={{lat: Number(offer.offerLocation.latitude),lng: Number(offer.offerLocation.longitude)}} onClick={() => handleMarkerClick(offer)} />})
                             }
                             {selectedMarker && (
                                     <InfoWindow

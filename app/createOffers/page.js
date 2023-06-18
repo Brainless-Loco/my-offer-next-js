@@ -104,8 +104,8 @@ export default function page() {
     const handleSubmit = async (event) => {
         setloading(true)
         try {
-            const {accountRef} = brandData
-            const {brandTitle,brandCover,geoLocation} = brandData.brandInfo
+            const {accountRef, geoLocation} = brandData
+            const {brandTitle,brandCover} = brandData.brandInfo
             const fileName = `brandOfferImages/${accountRef}_${Date.now()}`;
             uploadTheOfferCover(fileName)
             const offerData = {
@@ -133,7 +133,6 @@ export default function page() {
             console.error('Error adding offer:', error);
           }
         setDefaultValues()
-        router.refresh();
         setloading(false)
     };
     
